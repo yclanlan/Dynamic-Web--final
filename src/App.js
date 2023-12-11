@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navigation from "./pages/Navigation";
+import Home from "./pages/Home";
+import PrivateEvent from "./pages/PrivateEvent";
+// import Contact from "./pages/Contact";
+// import People2 from "./pages/People2";
+// import People1 from "./pages/People1";
+// import Leave from "./pages/Leave";
+// import Finish from "./pages/Finish";
+
 
 function App() {
+  // Set the animation to play based on scroll position
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Navigation />} >
+              
+      
+              <Route index element={<Home />} />
+              <Route path="privateEvent" element={<PrivateEvent />} />
+              {/* <Route path="contact" element={<Contact />} />
+              <Route path="leave" element={<Leave />} />
+              <Route path="people1" element={<People1 />} />
+              <Route path="people2" element={<People2 />} />
+              <Route path="finish" element={<Finish />} />
+              <Route path="finish" element={<Finish />} />
+              <Route path="*" element={<NoPage />} /> */}
+
+      </Route>
+
+    </Routes>
+
+  </BrowserRouter>
+     </>
+  
   );
+
 }
 
 export default App;

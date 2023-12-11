@@ -1,38 +1,75 @@
-.App {
-  text-align: center;
+html{
+  
+  background:#000000;
+  background-image: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0));
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  /* Reseting the default here */
+  margin-left: auto;
+  margin-right: auto;
+
+  margin-block-start: 0;
+  margin-block-end: 0;
+
+  font-family: Cormorant Garamond, cursive; 
+  color:white;
+  
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#article_wrapper {
+  /* position: relative; */
+  
+  height: 8000px; /* Length of the interactive scroll article */
+  z-index: 4;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#canvas_wrapper {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 4;
 }
 
-.App-link {
-  color: #61dafb;
+.scroll_slide {
+  color: "white";
+  position: "absolute";
+  width: "50vw";
+  padding-left: "20px";
+  z-index: "5";
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h4{
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+p{
+  font-size: 1rem;
+}
+
+a {
+  color: rgb(255, 236, 239);
+  text-decoration: none;
+  z-index: 50;
+}
+
+a:visited {
+  color: rgb(255, 236, 239);
+  text-decoration: none;
+  z-index: 50;
+}
+
+.hover{
+  transition: all .18s ease;
+  background-color: black;
+  color:white;
+}
+
+.hover:hover{
+  background-color: #ffffff;
+  color:black;
+  scale: 1.15;
 }

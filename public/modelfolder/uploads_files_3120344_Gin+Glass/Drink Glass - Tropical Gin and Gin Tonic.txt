@@ -1,0 +1,15 @@
+Drink Glass - Tropical Gin and Gin Tonic
+
+-This model is for visualization purposes.
+-This is a non manifold model, modeling on Blender 3.3 and ZBrush.
+-No texture maps, made on blender nodes.
+-The rar contains ".blend", ".obj" and ".fbx" file formats.
+-All parts of each model are logically named for easy management.
+-Compatible with Cycles and Eevee render. Be careful when opening in software other than Blender.
+-Metric units used. Already in scale.
+
+POLY: 270K tris. 139K verts.
+
+More models for sale, check my profile!
+I hope you like it!
+Thanks for your support.
