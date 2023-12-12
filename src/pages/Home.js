@@ -163,25 +163,25 @@ function App() {
 
 
         <SimpleSlide viewportPosition={750}>
-
         <div style={{ 
-          
           fontFamily: "Cormorant Garamond, cursive", 
           margin:"auto" , 
           backgroundColor:"black",
-          // height:"200vh",
+          height:"200vh",
           fontSize:"3rem" , 
           letterSpacing:"0.1rem", 
           textAlign:"center",
           backdropFilter: "blur(5px)",
           zIndex:"10" }}>
             <Order />
-          </div>
-
-
-          
             
+          </div> 
+
+         
           </SimpleSlide >
+
+
+    
 
           
 

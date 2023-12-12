@@ -1,24 +1,25 @@
-  .App{
+  .calendar-App{
     display: flex;
     flex-direction: row;
     gap:2rem;
+    width: 80%;
     margin: 2rem auto;
     align-items: top;
     
   }
 
-  .Left-Panel{
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    width: 100%;
-    padding-top: 0.8rem;
-    margin:0;
-    background-color: #f0f0f0;
-  }
+
 
   .events-container{
     width:100%;
+  }
+  h1{
+    font-size: 3.125rem;
+  }
+  
+  h2{
+    
+    margin: 0.8rem 0;
   }
 
   h4{
@@ -37,10 +38,10 @@
 
 
 
-  .Right-Panel{
+  .calendar-Panel{
     display: flex;
     flex-direction: column;
-    
+    width:50%;
     margin-block-start: 0.67em;
     margin-block-end: 0.67em;
     /* margin-inline-start: 0px;
@@ -57,7 +58,7 @@
     border-radius: 16px;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     
-    line-height: 2rem;
+    line-height: 2.25rem;
    }
 
 
@@ -188,7 +189,7 @@
     padding: 1rem 1rem;
     background: none;
     text-align: left;
-    line-height: 16px;
+   
     
     
   }

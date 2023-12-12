@@ -120,12 +120,13 @@ export default function LanCalendar() {
 
   return (
 
-  <div className="App">
+  <div className="calendar-App">
 
-          <div className="Right-Panel">
+          <div className="calendar-Panel">
           {/* calendar  */}
           <div className="calendar-container">
             <Calendar 
+            height={"100%"}
             value={date} 
             onChange={handleDateChange} 
             tileContent={customTileContent} />
@@ -134,31 +135,14 @@ export default function LanCalendar() {
           </div>
 
 
-
-
-
-         
-            
-              
                   <div className="adding-event">
- 
-                  <h1>{date.toDateString()}</h1>
+                  <h2>Select Time :</h2>
                   <hr/>
-                    <h2>Name :&nbsp;</h2>
-                    <input
-                      type="text"
-                      style={{width: '100%', height: '1.4rem',fontSize:'1.2rem',}}
-                      placeholder="Name Plz!" 
-                      value={inputEvent}
-                      onChange={(e) => setInputEvent(e.target.value)}
-                    />
-                    <br/>
-                   
+                  <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+                  <h2 style={{fontSize:"2.125rem"}}>{date.toDateString()}</h2>
+                  
 
-                    <h2>Time :&nbsp;</h2>
-                    
-                    
-                    <select name="time" id="time" style={{fontSize:'1.2rem', width:'100%'}}>
+                  <select name="time" id="time" style={{fontSize:'1.2rem', width:'50%', height:"1.5rem"}}>
                     <option >6:00 PM</option>
                     <option >6:30 PM</option>
                     <option >7:00 PM</option>
@@ -167,8 +151,40 @@ export default function LanCalendar() {
                     <option >8:30 PM</option>
                     <option >9:00 PM</option>
                     </select>
+                  </div>
+                 
+
                   
+                    
+
+                  
+              
+                  
+                    
+                    <h2>Name :&nbsp;</h2>
+                    <input
+                      type="text"
+                      style={{width: '100%', height: '1.4rem',fontSize:'1.1rem',}}
+                      placeholder="" 
+                      value={inputEvent}
+                      onChange={(e) => setInputEvent(e.target.value)}
+                    />
                     <br/>
+                    
+
+
+                   
+                    <h2>Phone Number</h2>
+                    <input
+                      type="tel"
+                      style={{width: '100%', height: '1.4rem',fontSize:'1.2rem',}}
+                      placeholder=" " 
+                      value={inputEvent}
+                      onChange={(e) => setInputEvent(e.target.value)}
+                    />
+                    <br/>
+                   
+
 
 
                     <br/><br/>
@@ -189,7 +205,7 @@ export default function LanCalendar() {
 
                   <div style={{     
                         display: divVisible ? 'block' : 'none'}}>
-                          We received your booking!  Talk to you soon!  ❤
+                        ❤ Received your booking!  Talk to you soon!  ❤
                     </div>
                 </div>
                     

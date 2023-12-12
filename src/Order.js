@@ -167,7 +167,11 @@ export default function Order() {
       <h4>Server: Lan</h4>
       <br />
       
-        {Object.keys(orders).map((wineId) => (
+        {Object.keys(orders).map((wineId) => {
+
+        const quantity = orders[wineId];
+        if (quantity > 0) {
+          return (
         <div style={{
             display: "flex", 
             flexDirection:"row",
@@ -185,8 +189,13 @@ export default function Order() {
           </div>
 
         </div>
-        ))
+
+
+      );
+        } else {
+          return null; 
         }
+      })}
         
       ------------------------------
       <br/><br/>
@@ -218,6 +227,64 @@ export default function Order() {
       </div>
       <br/><br/><br/>
     </div>
+
+
+    <div style={{     
+                        display: divVisible ?   'none' : 'block',
+                        fontSize:"1.5rem",
+                        fontFamily:"VT323",
+                        color:"black", 
+                        backgroundColor:"white" ,
+                        width:"40%",
+                        margin:"auto",
+                        paddingTop:"5rem",
+                        paddingLeft:"1.3rem",
+                        paddingBottom:"5rem",
+                        textAlign:"center",
+                        
+                     }}>
+                      Remember to Checkout!<br/><br/>
+                      THANK YOU
+    </div>
+
+    <div style={{     
+                        display: divVisible ?   'none' : 'block',
+                        fontSize:"1rem",
+                        fontFamily:"VT323",
+                        color:"white", 
+                        // backgroundColor:"white" ,
+
+                        width:"100%",
+                        margin:"auto",
+                        paddingTop:"25rem",
+                        textAlign:"center",
+                        bottom:"2rem",
+                        
+                     }}>
+                      ❤ website made by Lan ❤
+                     
+    </div>
+
+
+    <div style={{     
+                        display: divVisible ?  'block':'none' ,
+                        fontSize:"1rem",
+                        fontFamily:"VT323",
+                        color:"white", 
+                        // backgroundColor:"white" ,
+
+                        width:"100%",
+                        margin:"auto",
+                       
+                        textAlign:"center",
+                        bottom:"2rem",
+                        
+                     }}>
+                      ❤ website made by Lan ❤
+                     
+    </div>
+
+
     
     </>
   );
