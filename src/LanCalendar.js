@@ -6,130 +6,46 @@ import './calendar.css';
 export default function LanCalendar() {
 
   const [divVisible, setDivVisible] = useState(false);
+  const [name, setName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [date, setDate] = useState(new Date());
   
   const handleButtonClick = () => {
-      setDivVisible(!divVisible);
+    if (validateName(name) && validatePhoneNumber(phoneNumber)) {
+      setDivVisible(!divVisible); 
+    } else { 
+      alert('Type the correct name and phone number.');
+    }
     };
-  
-  const [date, setDate] = useState(new Date());
-  const [events, setEvents] = useState([]);
-  const [inputEvent, setInputEvent] = useState('');
-  const [startTime, setStartTime] = useState('00:00');
-  const [endTime, setEndTime] = useState('00:30'); 
-  const [editingEvent, setEditingEvent] = useState(null); 
 
-  // 日期變更
+    const validateName = (inputName) => {
+      return inputName.trim() !== ''; 
+    };
+
+    const validatePhoneNumber = (inputPhoneNumber) => {
+      return inputPhoneNumber.trim() !== '' && /^\d{10}$/.test(inputPhoneNumber);
+    };
+
+  
   const handleDateChange = (newDate) => {
     setDate(newDate);
   };
+  
+  
+  
 
-  // 新增事件
-  const handleAddEvent = () => {
-     // 創建新事件物件
-    if (inputEvent && startTime && endTime) {
-
-      const newEvent = {
-        id: new Date().getTime(),
-        date: date.toDateString(),
-        content: inputEvent,
-        startTime,
-        endTime,
-      };
-
-      // 更新事件狀態
-      setEvents((prevEvents) => [...prevEvents, newEvent]);
-      setInputEvent('');
-      setStartTime('00:00');
-      setEndTime('00:30');
-      console.log('NEW EVENT!')
-      console.log(newEvent);
-
-    }
-  };
-
-  // 處理編輯事件
-  const handleEditEvent = (eventId) => {
-    // 找到要編輯的事件
-    const eventToEdit = events.find((event) => event.id === eventId);
-    if (eventToEdit) {
-      setEditingEvent(eventToEdit);
-    }
-  };
-
-  // 處理刪除事件
-  const handleDeleteEvent = (eventId) => {
-    setEvents((prevEvents) => prevEvents.filter((event) => event.id !== eventId));
-  };
-
-  // 保存編輯後的事件
-  const handleSaveEdit = (editedEvent) => {
-    // 更新事件狀態，保存編輯後的事件
-    setEvents((prevEvents) =>
-      prevEvents.map((event) => (event.id === editedEvent.id ? editedEvent : event))
-      
-    );
-    console.log('Editing saved!');
-    console.log(editedEvent);
-    setEditingEvent(null); 
-  };
-  // 取消編輯事件
-  const handleCancelEdit = () => {
-    setEditingEvent(null); 
-  };
-
-  // 自定義日曆tile內容
-  const customTileContent = ({ date, view }) => {
-    if (view === 'month') {
-      const dateKey = date.toDateString();
-      const dateEvents = events.filter((event) => event.date === dateKey);
-      if (dateEvents.length > 0) {
-
-        return (
-          <>
-          <br/>
-          <ul>
-            {dateEvents.map((event) => (
-              <li key={event.id}>
-                <div className="event-div">
-                  <span className="event-title" >{event.content}</span>
-                  <br />
-                  <span className="event-time" >Start: {event.startTime}</span>
-                  <br />
-                  <span className="event-time" >End: {event.endTime}</span>
-                  <br />
-
-                    <div className="eventButtonDiv">
-                    <button className="eventButton" 
-                    onClick={() => handleEditEvent(event.id)}>Edit </button>
-                    &nbsp;
-                    <button className="eventButton" 
-                    onClick={() => handleDeleteEvent(event.id)}>Delete</button>
-                    </div>
-                  <hr/>
-                </div>
-              </li>
-            ))}
-          </ul>
-
-          </>
-        );
-      }
-    }
-    return null;
-  };
 
   return (
 
   <div className="calendar-App">
 
           <div className="calendar-Panel">
-          {/* calendar  */}
           <div className="calendar-container">
             <Calendar 
             height={"100%"}
             value={date} 
-            onChange={handleDateChange} 
-            tileContent={customTileContent} />
+            onChange={handleDateChange} />
+
           </div>
           <br/>
           </div>
@@ -153,39 +69,24 @@ export default function LanCalendar() {
                     </select>
                   </div>
                  
-
-                  
-                    
-
-                  
-              
-                  
-                    
                     <h2>Name :&nbsp;</h2>
                     <input
                       type="text"
                       style={{width: '100%', height: '1.4rem',fontSize:'1.1rem',}}
                       placeholder="" 
-                      value={inputEvent}
-                      onChange={(e) => setInputEvent(e.target.value)}
+                      onChange={(e) => setName(e.target.value)}
                     />
                     <br/>
-                    
 
-
-                   
                     <h2>Phone Number</h2>
                     <input
                       type="tel"
                       style={{width: '100%', height: '1.4rem',fontSize:'1.2rem',}}
                       placeholder=" " 
-                      value={inputEvent}
-                      onChange={(e) => setInputEvent(e.target.value)}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
                     />
                     <br/>
                    
-
-
 
                     <br/><br/>
                 
@@ -209,16 +110,8 @@ export default function LanCalendar() {
                     </div>
                 </div>
                     
-                  </div>
+            </div>
                 
-            
-        
-
-
-
-
-
-
 
   </div>
   );

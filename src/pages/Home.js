@@ -1,7 +1,7 @@
 import "../App.css";
 import Scene from "../Scene";
 import SimpleSlide from "../SimpleSlide";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {CameraTimeline} from "../AnimatedCamera"
 import Order from "../Order";
 import DisplayOrder from "../DisplayOrder";
@@ -24,7 +24,7 @@ function App() {
     window.onscroll = (e) => {
       const scrolled = getScrollProgress();
       CameraTimeline.progress(scrolled);
-      let px = scrolled * 20000
+      // let px = scrolled * 20000
       // console.log("pixel:"+ px);
 
       // console.log("VH:" + ((scrolled * 25000) / document.documentElement.clientHeight) * 100 );
