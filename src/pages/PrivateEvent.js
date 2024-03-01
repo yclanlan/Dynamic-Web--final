@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "../App.css";
 import LanCalendar from "../LanCalendar";
 
@@ -6,18 +6,19 @@ import LanCalendar from "../LanCalendar";
 function PrivateEvent() {
 
 
+
     return (
     <>
 
 
     <div style={{ width:"70%", 
-                  height:"80vh",
-                  margin:"auto", 
-                  paddingTop:"15vh", 
+                  height:"100vh",
+                  margin:"0 auto", 
+                  paddingTop:"10vh", 
                   textAlign:"center"
     }}>
 
-    <h1>BOOK AN EVENT</h1>
+    <h1  style={{ margin:"2rem 0 0 0"}}>BOOK AN EVENT</h1>
     <p>For all inquiries, please fill out the form below and we will be in touch soon.</p>
     <hr></hr>
     <LanCalendar />

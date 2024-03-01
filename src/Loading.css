@@ -1,0 +1,36 @@
+
+  
+  #loader-container{
+    background-color: rgba(0,0,0,0.1);
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    
+    color:white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+
+  
+  @media screen and (max-width: 768px) {
+    #loader-container{
+        max-width:150px;
+    }
+    #loader{
+        width:150px;
+    }
+  }
+  
+  @media  screen and (max-width:650px) {
+    #loader-container{
+        max-width:100px;
+    }
+    #loader{
+        width:100px;
+    }
+  }

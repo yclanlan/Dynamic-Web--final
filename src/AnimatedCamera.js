@@ -2,16 +2,12 @@ import { PerspectiveCamera } from "@react-three/drei";
 import { useRef, useEffect } from "react"
 import { gsap } from "gsap"
 
-
-
 export const CameraTimeline = new gsap.timeline({
     paused:true
 });
 
 
-
-
- function AnimatedCamera(props){
+ function AnimatedCamera(){
   
   const cameraRef = useRef();
    
@@ -43,6 +39,13 @@ export const CameraTimeline = new gsap.timeline({
      );
 
 
+     CameraTimeline.to(
+      cameraRef.current.position,
+      { x:2, y:3 , z:1},
+       "animation2.5"
+      );
+      
+   
 
 
      CameraTimeline.to(

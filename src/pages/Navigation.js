@@ -24,17 +24,30 @@ const Navigation = () => {
                             > 
                         <div>
                         <Link to="/">
-                          <img src="logo.png" style={{ height:"4rem"}} ></img>
+                          <img src="logo.png" style={{ height:"4rem"}} alt="Lan's bar logo"></img>
                         </Link>
                         </div>
+                        <div style={{   display: "flex", 
+                                        width:"30%",
+                                        flexDirection:"row", 
+                                        alignItems:"flex", 
+                                        justifyContent:"space-between",
+                                        fontSize:"1.4rem",
 
-                        {/* <div>
-                        <Link to="/contact">Contact</Link>
-                        </div> */}
+                                        paddingTop: "1rem",
+                                        paddingLeft: "2rem",
+                                        paddingRight: "2rem",}}>
 
-                        <div>
-                        <Link to="/privateEvent"> Reservation </Link>
-                        </div>
+                            <div>
+                            <Link to="/privateEvent"> Reservation </Link>
+                            </div>
+
+                            <div>
+                            <Link to="/about">About</Link>
+                            </div>
+
+
+                          </div>
 
             </div>
             {/* <hr style={{  border: "0.5px solid", borderColor: "rgba(255,255,255,0.5)",

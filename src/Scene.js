@@ -1,11 +1,9 @@
 import { Suspense } from "react";
-import Background from "./Background";
 import { Canvas } from "@react-three/fiber";
-import { PerspectiveCamera , OrbitControls , Environment, Stars, Sparkles, useTexture} from "@react-three/drei";
+import { Environment, Stars, Sparkles,} from "@react-three/drei";
 import { Gin } from "./Gin-Glasslight"
 import { Magrita } from "./Magrita"
 import { Martini } from "./Martini2"
-import FX from "./FX";
 import AnimatedCamera from "./AnimatedCamera";
 import AnimatedObject from "./Object";
 
@@ -22,19 +20,20 @@ function Scene() {
 
         <Environment files="./fireplace_1k.hdr" background blur={0.1} rotation={[0,1,0]}/>
         
+        {/* Post Processing */} 
         {/* <FX />; */}
+
+
 
         {/* Camera 🎥 */}
          <AnimatedCamera />
 
-        {/* <gridHelper /> */}
-        {/* <OrbitControls enableZoom = {false}/> */}
-
+        {/* Fancy Stuff */}
         <Stars count={1000} />
-        <Sparkles size={10} 
+        <Sparkles size={20} 
                   count={1000}
-                  scale={20}
-                  speed={0.3}/>
+                  scale={50}
+                  speed={0.5}/>
         
 
         {/* Lights 💡 */}
@@ -45,10 +44,6 @@ function Scene() {
 
 
         {/* Objects 📦 */}
-
-
-
-
 
         <Suspense fallback={null}>
           
@@ -75,9 +70,7 @@ function Scene() {
         position={[2, -0.13, 0]} 
         rotation={[0,-Math.PI/4*3,0]}
         />
-
-
-          
+   
         </Suspense>
         
       </Canvas>
