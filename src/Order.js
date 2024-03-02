@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import{ useState , useRef } from 'react';
+import { toPng } from 'html-to-image';
 import SignaturePad from './Sign';
 
 
@@ -6,6 +7,7 @@ import SignaturePad from './Sign';
 export default function Order() {
 
   const [orders, setOrders] = useState({});
+  const elementRef = useRef(null);
   
   const wines = [
 
@@ -39,19 +41,31 @@ export default function Order() {
       setDivVisible(!divVisible);
     };
 
-    const handleOrderChange = (wineId, quantity) => {
-      setOrders((prevOrders) => {
-        const newQuantity = (prevOrders[wineId] || 0) + quantity;
-  
-    
-        const updatedOrders = {
-          ...prevOrders,
-          [wineId]: Math.max(newQuantity, 0),
-        };
-  
-        return updatedOrders;
+  const handleOrderChange = (wineId, quantity) => {
+    setOrders((prevOrders) => {
+      const newQuantity = (prevOrders[wineId] || 0) + quantity;
+      const updatedOrders = {
+        ...prevOrders,
+        [wineId]: Math.max(newQuantity, 0),
+      };
+
+      return updatedOrders;
+    });
+  };
+
+  const htmlToImageConvert = () => {
+    toPng(elementRef.current, { cacheBust: false })
+      .then((dataUrl) => {
+        const link = document.createElement("a");
+        link.download = "my-image-name.png";
+        link.href = dataUrl;
+        link.click();
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    };
+  };
+
 
   const totalCups = Object.values(orders).reduce((total, cups) => total + cups, 0);
 
@@ -175,26 +189,39 @@ export default function Order() {
 
    {/* ======== Receipt ======= */}
 
+   <div ref={elementRef} style={{     
+                    
+                    fontSize:"1.5rem",
+                    fontFamily:"VT323",
+                    color:"black", 
+                    paddingTop:"0.2rem",
+                    paddingLeft:"1.3rem",
+                    paddingRight:"1.3rem",
+                    textAlign:"left",
+                    alignItems:"left",
+                  }} >
+
       <div style={{     
-                        display: divVisible ? 'block' : 'none',
-                        fontSize:"1.5rem",
-                        fontFamily:"VT323",
-                        color:"black", 
-                        backgroundColor:"white" ,
-                        width:"40%",
-                        margin:"auto",
-                        paddingTop:"0.2rem",
-                        paddingLeft:"1.3rem",
-                        paddingRight:"1.3rem",
-                        textAlign:"left",
-                        alignItems:"left",
-                     }}>
+                    display: divVisible ? 'block' : 'none',
+                    // fontSize:"1.5rem",
+                    fontFamily:"VT323",
+                    color:"black", 
+                    backgroundColor:"white" ,
+                    width:"40%",
+                    margin:"auto",
+                    paddingTop:"0.2rem",
+                    paddingLeft:"1.3rem",
+                    paddingRight:"1.3rem",
+                    textAlign:"left",
+                    alignItems:"left",
+                  }}>
       
-      <h2 style={{ fontWeight:"900"   }}> SALE TRANSACTION</h2>
+      <h2 style={{ fontFamily:"VT323", fontSize:"1.5em", fontWeight:"900" ,  }}> SALE TRANSACTION</h2>
     
-      <div style={{background:"black",color:"white",width:"95%",paddingLeft:"1%",}}>
+      <div style={{background:"black", fontSize:"0.8em",color:"white",width:"95%",paddingLeft:"1%",paddingBottom:"1%",}}>
       <h4>Server: Lan</h4>
       </div>
+
       <br />
       
         {Object.keys(orders).map((wineId) => {
@@ -209,14 +236,20 @@ export default function Order() {
             justifyContent:"space-between",
             paddingRight:"1.3rem",
             width:"95%"}}>
-          <div key={wineId}  >
-            {wines.find((wine) => wine.id === parseInt(wineId)).name} x{' '}
-            {orders[wineId]}
-          </div>
+          <span style={{
+            fontSize:"0.9em",
+            width:"100%",
+            paddingBottom:"0.3em"}} key={wineId}  >
+            
+            {wines.find((wine) => wine.id === parseInt(wineId)).name}{'. '} 
+            <span>{' '}  x  {orders[wineId]}</span>
+          </span>
           
-          <div>
+          <span style={{
+            display: "flex",
+            fontSize:"0.9em", }}>
           ${orders[wineId]*15}
-          </div>
+          </span>
 
         </div>
 
@@ -226,35 +259,49 @@ export default function Order() {
           return null; 
         }
       })}
-        <br/>
-      <hr style={{marginLeft:"0",border: "1px solid", width:"95%",}}/>
-      <br/>
+        
+      <hr style={{  marginLeft:"0",border: "1px solid", width:"95%",}}/>
+      
+      <span style={{ fontSize:"0.9em",
+            width:"100%",lineHeight:"1rem"}}>
       Items in Transaction: {totalCups}
+      </span>
       <br/>
+      <span style={{ fontSize:"0.9em",
+            width:"100%",}}>
       Balance to pay: ${totalCups *15}
+      </span>
       <br/>
    
       <br/>
      
       <div style={{background:"black",color:"white",width:"95%",paddingLeft:"1%",lineHeight:"1.4rem"}}>
       <br/>
+      <span style={{ fontSize:"0.9em",
+            width:"100%",}}>
       LAN'S FRIEND DISCOUNT: -${totalCups *15}
+      </span>
       <br/>
+      <span style={{ fontSize:"0.9em",
+            width:"100%",}}>
       PAYMENT AMOUNT:   $0
       <br/>
+      </span>
 
       <br/>
       </div >
-    
-      
-      <br/><br/>
-      <div style={{ textAlign:"right", width:"95%"}}>
+  
+      <br/>
+      <div style={{ fontSize:"0.9em", textAlign:"right", width:"95%"}}>
+      <span style={{ fontSize:"0.9em",
+                       width:"100%",
+                       paddingBottom:"0.3em"}}>  
       TIPS:&nbsp; 
       <input type="text" 
               value={tips} 
               onChange={handleTipsChange} 
       style={{ fontFamily:"VT323", 
-                fontSize:"1.625rem",
+                fontSize:"1em",
                 textAlign:"center", 
                 width:"20%", 
                 borderBottom: "2px solid black", 
@@ -263,14 +310,21 @@ export default function Order() {
                 borderRight: "none",
                 background: "none", 
                 padding: "0.2rem"}}  />
+                 </span>
       
       <br/><br/>
+
+
+       <span style={{ fontSize:"0.9em",
+                       width:"100%",
+                       paddingBottom:"0.3em"}}>  
       TOTAL:      
        <input type="text" 
               value={total} 
               onChange={handleTotalChange} 
+
       style={{ fontFamily:"VT323", 
-                fontSize:"1.625rem",
+                fontSize:"1em",
                 textAlign:"center", 
                 width:"20%", 
                 borderBottom: "2px solid black", 
@@ -279,23 +333,37 @@ export default function Order() {
                 borderRight: "none",
                 background: "none", 
                 padding: "0.2rem"}}  />
-      <br/><br/><br/>
+                </span>
+                
+      <br/><br/>
       </div>
     
       
-     <SignaturePad />
+     <SignaturePad  style={{ fontSize:"0.9em",
+            width:"100%",}} />
 
       <hr style={{marginLeft:"0",border: "1px solid",width:"95%"}}/>
-      <br/>
+     
 
-      <div style={{ textAlign:"center", width:"100%"}}>
+      <div style={{ textAlign:"center", 
+                    width:"100%", 
+                    height:"100%", 
+                    fontSize:"0.9em", 
+                    paddingBottom:"2rem"}}>
+      <div style={{ fontSize:"0.9em",
+                       width:"100%",
+                       height:"100%",
+                       paddingBottom:"2rem"}}>  
         THANK YOU FOR  <br/>
         DRINKING WITH LAN
-        <br/><br/>
         ♥
         <br/><br/>
+        </div>
       </div>
       </div>
+  </div>
+      <br/>
+     
       <br/><br/>
     </div>
 
@@ -351,6 +419,14 @@ export default function Order() {
                         bottom:"2rem",
                         
                      }}>
+      <button onClick={htmlToImageConvert}
+      className='hover'
+      style={{  fontSize:"1rem",
+                padding: "1rem 2rem",
+                border: "1px solid #ffffff",
+                borderRadius: "2rem"}}>
+                  Download Receipt</button>
+                  <br/><br/>
                       ❤ website made by Lan ❤<br/><br/>
                      
     </div>
