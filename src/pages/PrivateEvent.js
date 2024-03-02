@@ -1,6 +1,6 @@
 import React from 'react';
 import "../App.css";
-import LanCalendar from "../LanCalendar";
+import Reservation from "../Reservation";
 
 
 function PrivateEvent() {
@@ -21,7 +21,7 @@ function PrivateEvent() {
     <h1  style={{ margin:"2rem 0 0 0"}}>BOOK AN EVENT</h1>
     <p>For all inquiries, please fill out the form below and we will be in touch soon.</p>
     <hr></hr>
-    <LanCalendar />
+    <Reservation />
 
     </div>
 

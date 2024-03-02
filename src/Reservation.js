@@ -6,7 +6,7 @@ import { set, ref } from "firebase/database";
 
 
 
-export default function LanCalendar() {
+export default function Reservation() {
 
 
       // Push Function

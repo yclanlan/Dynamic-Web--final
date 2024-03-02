@@ -173,7 +173,7 @@ export default function Order() {
 
 
 
-
+   {/* ======== Receipt ======= */}
 
       <div style={{     
                         display: divVisible ? 'block' : 'none',

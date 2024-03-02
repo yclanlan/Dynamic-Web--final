@@ -36,7 +36,7 @@ const SignaturePad = () => {
       onMouseMove={draw}
       height={60} 
       
-      style={{   border: '0px solid black', cursor: 'url("./mdi_pen.png") 10 10 , auto' }} // 使用 crosshair 光标样式
+      style={{   border: '0px solid black', cursor: 'url("./mdi_pen.png") 10 10 , auto' }} 
     ></canvas>
     </div>
   );
