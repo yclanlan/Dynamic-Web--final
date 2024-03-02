@@ -3,9 +3,9 @@ import { Canvas } from "@react-three/fiber";
 import { Environment, Stars, Sparkles,} from "@react-three/drei";
 import { Gin } from "./Gin-Glasslight"
 import { Magrita } from "./Magrita"
-import { Martini } from "./Martini2"
+import { Martini } from "./Martini"
 import AnimatedCamera from "./AnimatedCamera";
-import AnimatedObject from "./Object";
+import AnimatedObject from "./AnimatedObject";
 
 
 
