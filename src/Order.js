@@ -339,8 +339,7 @@ export default function Order() {
       </div>
     
       
-     <SignaturePad  style={{ fontSize:"0.9em",
-            width:"100%",}} />
+     <SignaturePad  />
 
       <hr style={{marginLeft:"0",border: "1px solid",width:"95%"}}/>
      
